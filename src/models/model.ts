@@ -1,7 +1,7 @@
 export enum Role {
-    SuperAdmin,
-    Admin,
-    Subscriber
+    SuperAdmin = "SuperAdmin",
+    Admin = "Admin",
+    Subscriber = "Subscriber"
   }
 
 export interface UserAction{

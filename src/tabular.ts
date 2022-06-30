@@ -1,8 +1,9 @@
 import {User} from "./app.js";
+import {Role} from "./models/model.js";
 
 let info: Array<object> = [];
 let info1: Array<Array<string>> = [];
-let column_list = ["First Name","Middle Name","Last Name","Email","Phone Number","Role","Address","Edit"];
+let column_list = ["First Name","Middle Name","Last Name","Email","Phone Number","Role","Address","User Created Date","Edit"];
 
 function api<T>(url: string): Promise<T> {
     return fetch(url)
@@ -72,6 +73,7 @@ function loadTableData(){
             }
             inputField.value =(info[i] as any)[column]
             inputField.disabled = true
+            inputField.required = true
             arr.push((info[i] as any)[column])
             cell.appendChild(inputField);
         })        
@@ -83,8 +85,13 @@ function loadTableData(){
 
 let user = new User(info,info1);
 
-document.getElementById("input_tag")?.addEventListener("submit",(e)=>{
+document.getElementById("input_tag")?.addEventListener("submit",(e:any)=>{
     e.preventDefault();
-    user.addUser(e);
+    if(e.target[5].value in Role){
+        user.addUser(e);
+    }else{
+        alert(e.target[5].value+" role is not valid . Please choose from the given role : SuperAdmin , Admin , Subscriber");
+        return;
+    }
 })
 

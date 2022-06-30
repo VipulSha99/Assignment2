@@ -6,7 +6,8 @@
         "Email":"vipul@source.com",
         "Phone Number":1234567890,
         "Role":"Subscriber",
-        "Address":"26/B Brahampuri, Meerut"
+        "Address":"26/B Brahampuri, Meerut",
+        "User Created Date":"29 June 2022 Time: 12:18"
     },
     {
         "First Name":"Akash",
@@ -15,7 +16,8 @@
         "Email":"aka@source.com",
         "Phone Number":2234567890,
         "Role":"Admin",
-        "Address":"26/B Brahampuri, Meerut"
+        "Address":"26/B Brahampuri, Meerut",
+        "User Created Date":"29 July 2022 Time: 12:18"
     },
     {
         "First Name":"Viny",
@@ -24,7 +26,8 @@
         "Email":"viny@source.com",
         "Phone Number":5234567890,
         "Role":"Subscriber",
-        "Address":"26/B Brahampuri, Meerut"
+        "Address":"26/B Brahampuri, Meerut",
+        "User Created Date":"19 June 2021 Time: 11:18"
     },
     {
         "First Name":"Kartik",
@@ -33,7 +36,8 @@
         "Email":"kartik@source.com",
         "Phone Number":9234567890,
         "Role":"Subscriber",
-        "Address":"Raj Nagar Extension"
+        "Address":"Raj Nagar Extension",
+        "User Created Date":"9 June 2022 Time: 1:18"
     },
     {
         "First Name":"Sunil",
@@ -42,7 +46,8 @@
         "Email":"Rastogi@source.com",
         "Phone Number":9657895678,
         "Role":"Subscriber",
-        "Address":"26/B Brahampuri, Delhi"
+        "Address":"26/B Brahampuri, Delhi",
+        "User Created Date":"11 March 2022 Time: 10:25"
     }
 ]
 
