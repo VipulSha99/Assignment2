@@ -5,8 +5,8 @@ export enum Role {
   }
 
 export interface UserAction{
-  info:Array<object>,
-  info1:Array<Array<string>>,
+  APIData:Array<object>,
+  UsersData:Array<Array<string>>,
   addUser(refer:any):void,
   selectedRowEdit(refer:any):void,
   selectedRowDelete(i:any):void

@@ -17,20 +17,20 @@ function userCreatedDate(){
 }
 
 export class User<T extends Array<object>,U extends Array<Array<string>>> implements UserAction{
-    info:Array<object> = [];
-    info1:Array<Array<string>> = [];
+    APIData:Array<object> = [];
+    UsersData:Array<Array<string>> = [];
     
-    constructor( info:T,info1:U){
-        this.info = info
-        this.info1 = info1
+    constructor( APIData:T,UsersData:U){
+        this.APIData = APIData
+        this.UsersData = UsersData
     }
     
     @userCreatedDate()
     addUser(arr:Array<string>){
-        this.info1.push(arr);
+        this.UsersData.push(arr);
         document.getElementById("reset")?.click();
         let table = document.getElementById("table_tag") as HTMLTableElement;
-        let i = this.info1.length-1;
+        let i = this.UsersData.length-1;
         let row = table.insertRow(i+1);
         for(let j=0;j<arr.length+1;j++){
             if(j ===arr.length){
@@ -62,7 +62,7 @@ export class User<T extends Array<object>,U extends Array<Array<string>>> implem
             else{
                 inputField.type = "text";
             }
-            inputField.value =this.info1[i][j]
+            inputField.value =this.UsersData[i][j]
             inputField.disabled = true
             cell.appendChild(inputField);
         }   
@@ -77,7 +77,7 @@ export class User<T extends Array<object>,U extends Array<Array<string>>> implem
                 refer.parentNode.parentNode.cells[j].childNodes[0].disabled = false
             }
             refer.parentNode.parentNode.cells[j].childNodes[0].value = "Save";
-            let arrChanged = [...this.info1[refer.parentNode.parentNode.rowIndex-1]]
+            let arrChanged = [...this.UsersData[refer.parentNode.parentNode.rowIndex-1]]
             refer.parentNode.parentNode.cells[j].childNodes[0].onclick=()=>{
                 if(refer.parentNode.parentNode.cells[5].childNodes[0].value in Role){}
                 else{
@@ -90,7 +90,7 @@ export class User<T extends Array<object>,U extends Array<Array<string>>> implem
                     refer.parentNode.parentNode.cells[j].childNodes[0].disabled = true
                     
                 }
-                this.info1[refer.parentNode.parentNode.rowIndex-1] = arrChanged;
+                this.UsersData[refer.parentNode.parentNode.rowIndex-1] = arrChanged;
                 refer.parentNode.parentNode.cells[j].childNodes[1].value = "Delete";
                 refer.parentNode.parentNode.cells[j].childNodes[1].onclick = (()=>{this.selectedRowDelete(refer)})
                 refer.parentNode.parentNode.cells[j].childNodes[0].value = "Edit";
@@ -100,7 +100,7 @@ export class User<T extends Array<object>,U extends Array<Array<string>>> implem
     
             refer.parentNode.parentNode.cells[j].childNodes[1].onclick=()=>{
                 for(j=0;j<refer.parentNode.parentNode.cells.length-1;j++){
-                    refer.parentNode.parentNode.cells[j].childNodes[0].value = this.info1[refer.parentNode.parentNode.rowIndex-1][j]
+                    refer.parentNode.parentNode.cells[j].childNodes[0].value = this.UsersData[refer.parentNode.parentNode.rowIndex-1][j]
                     refer.parentNode.parentNode.cells[j].childNodes[0].disabled = true
     
                 }
@@ -115,7 +115,7 @@ export class User<T extends Array<object>,U extends Array<Array<string>>> implem
         let rIndex,table = document.getElementById("table_tag") as HTMLTableElement;
                 rIndex = i.parentNode.parentNode.rowIndex;
                 table.deleteRow(rIndex)
-                this.info1.splice(rIndex-1,1)
+                this.UsersData.splice(rIndex-1,1)
     }
 
 }

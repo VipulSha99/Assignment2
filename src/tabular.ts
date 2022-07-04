@@ -1,9 +1,9 @@
 import {User} from "./app.js";
 import {Role} from "./models/model.js";
 
-let info: Array<object> = [];
-let info1: Array<Array<string>> = [];
-let column_list = ["First Name","Middle Name","Last Name","Email","Phone Number","Role","Address","User Created Date","Edit"];
+let APIData: Array<object> = [];
+let UsersData: Array<Array<string>> = [];
+let column_list: Array<string> = [];
 
 function api<T>(url: string): Promise<T> {
     return fetch(url)
@@ -23,22 +23,23 @@ document.getElementById("load_button")?.addEventListener("click",async()=>{
         document.getElementById("table_tag")!.style.display = "revert";
         document.getElementById("input_tag")!.style.display = "flex";
     }
-    info = data;
+    APIData = data;
     loadTableData();
 })
 
 function loadTableData(){
-    
     let table = document.getElementById("table_tag") as HTMLTableElement;
     let row = table.insertRow(0);
-    
+    column_list = Object.keys(APIData[0]);
+    column_list.push("Edit")
+
     column_list.forEach((column)=>{
         let headerCell = document.createElement("th");
         headerCell.innerHTML = column;
         row.appendChild(headerCell);
         
     })
-    for (let i = 0; i < info.length; i++) { 
+    for (let i = 0; i < APIData.length; i++) { 
         row = table.insertRow(i+1);
         let arr: Array<string> = [];
         column_list.forEach((column)=>{
@@ -71,19 +72,19 @@ function loadTableData(){
             else{
                 inputField.type = "text";
             }
-            inputField.value =(info[i] as any)[column]
+            inputField.value =(APIData[i] as any)[column]
             inputField.disabled = true
             inputField.required = true
-            arr.push((info[i] as any)[column])
+            arr.push((APIData[i] as any)[column])
             cell.appendChild(inputField);
         })        
-        info1.push(arr);
+        UsersData.push(arr);
 
     }
 
 }; 
 
-let user = new User(info,info1);
+let user = new User(APIData,UsersData);
 
 document.getElementById("input_tag")?.addEventListener("submit",(e:any)=>{
     e.preventDefault();
