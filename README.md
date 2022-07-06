@@ -1,4 +1,4 @@
-# Assignment 1
+# Assignment 2
 
 ## ✨Tabular Representation in Type Script✨
 
