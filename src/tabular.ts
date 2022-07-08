@@ -39,6 +39,7 @@ function loadTableData(){
         row.appendChild(headerCell);
         
     })
+    UsersData.splice(0,UsersData.length);
     for (let i = 0; i < APIData.length; i++) { 
         row = table.insertRow(i+1);
         let arr: Array<string> = [];
